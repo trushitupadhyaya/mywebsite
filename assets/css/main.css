@@ -144,7 +144,7 @@ h6 {
 --------------------------------------------------------------*/
 .header {
   color: var(--default-color);
-  background-color: #003366;
+  background-color: var(--background-color);
   position: fixed;
   top: 0;
   left: 0;
@@ -628,41 +628,48 @@ section,
 # Quatification
 --------------------------------------------------------------*/
 
-.education {
-  width: 75vw; 
-  margin: 75px 10px; 
-  margin-top: 10px;
-  padding: 5px;
-  background: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Shared card and heading styles for all CV sections */
+.education,
+.employment,
+.research,
+.journal-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 30px;
+  background: var(--surface-color);
   border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.education h2 {
-  color: #000; /* Changed to black */
-  font-size: 28px; /* Increased font size for better visibility */
-  font-weight: bold; /* Makes the text stand out */
-  text-align: center; /* Centers the heading */
-  text-transform: uppercase; /* Converts text to uppercase for a strong heading */
-  letter-spacing: 1.5px; /* Adds spacing for better readability */
-  margin-bottom: 25px; /* Slightly increased spacing below */
-  border-bottom: 3px solid #0056b3; /* Adds a bottom border for emphasis */
-  display: inline-block; /* Makes border fit the text width */
-  padding-bottom: 5px; /* Adds a little space below the text */
+.education > h2,
+.employment > h2,
+.research > h2,
+.journal-title {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 25px;
+  padding: 8px 24px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-color) 60%, var(--heading-color));
+  color: var(--contrast-color);
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 }
 
 /* Degree Styling */
 .degree {
-  border-left: 5px solid #0056b3;
-  padding-left: 15px;
   margin-bottom: 20px;
-  background: #eef2f7;
   padding: 15px;
+  background: color-mix(in srgb, var(--accent-color), transparent 92%);
+  border-left: 5px solid var(--accent-color);
   border-radius: 5px;
 }
 
 .degree h3 {
-  color: #333;
+  color: var(--heading-color);
   margin-bottom: 5px;
 }
 
@@ -673,328 +680,146 @@ section,
 }
 
 .degree strong {
-  color: #0056b3;
+  color: var(--accent-color);
 }
 
 /*--------------------------------------------------------------
 # History
 --------------------------------------------------------------*/
 
-/* Employment Section */
-.employment {
-  width: 75vw; 
-  margin: 75px 10px; 
-  padding: 5px;
-  background: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-}
-
-/* Heading Styling */
-.employment h2 {
-  color: #000; /* Changed to black */
-  font-size: 28px; /* Increased font size for better visibility */
-  font-weight: bold; /* Makes the text stand out */
-  text-align: center; /* Centers the heading */
-  text-transform: uppercase; /* Converts text to uppercase for a strong heading */
-  letter-spacing: 1.5px; /* Adds spacing for better readability */
-  margin-bottom: 25px; /* Slightly increased spacing below */
-  border-bottom: 3px solid #0056b3; /* Adds a bottom border for emphasis */
-  display: inline-block; /* Makes border fit the text width */
-  padding-bottom: 5px; /* Adds a little space below the text */
-}
-
-/* Table Styling */
-table {
+/* Employment and research tables (scoped to their sections) */
+.employment table,
+.research table {
   width: 100%;
   border-collapse: collapse;
-  background: #fff;
+  background: var(--surface-color);
   border-radius: 8px;
   overflow: hidden;
 }
 
-/* Table Headers */
-thead {
-  background: #0056b3;
-  color: white;
+.employment th,
+.research th {
+  background: color-mix(in srgb, var(--accent-color) 60%, var(--heading-color));
+  color: var(--contrast-color);
   text-align: left;
 }
 
-th, td {
+.employment th,
+.employment td,
+.research th,
+.research td {
   padding: 12px;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  text-align: left;
+  vertical-align: top;
 }
 
-/* Table Row Styling */
-tbody tr:hover {
-  background-color: #f1f1f1;
+.employment tbody tr:hover,
+.research tbody tr:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
 }
 
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  table {
-      display: block;
-      overflow-x: auto;
-      white-space: nowrap;
-  }
+.research tbody tr:nth-child(even) {
+  background-color: color-mix(in srgb, var(--default-color), transparent 96%);
+}
+
+/* Funding amounts in the research table */
+.research td:nth-child(3) {
+  font-weight: 700;
+  color: var(--accent-color);
 }
 
 /*--------------------------------------------------------------
 # Projects
 --------------------------------------------------------------*/
-/* Research Section */
-.research {
-  width: 75vw; 
-  margin: 75px 10px; 
-  padding: 5px;
-  background: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-}
-
-/* Heading Styling */
-.research h2 {
-  color: #000; /* Changed to black */
-  font-size: 28px; /* Increased font size for better visibility */
-  font-weight: bold; /* Makes the text stand out */
-  text-align: center; /* Centers the heading */
-  text-transform: uppercase; /* Converts text to uppercase for a strong heading */
-  letter-spacing: 1.5px; /* Adds spacing for better readability */
-  margin-bottom: 25px; /* Slightly increased spacing below */
-  border-bottom: 3px solid #0056b3; /* Adds a bottom border for emphasis */
-  display: inline-block; /* Makes border fit the text width */
-  padding-bottom: 5px; /* Adds a little space below the text */
-}
-
-/* Table Styling */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-/* Table Headers */
-thead {
-  background: #0056b3;
-  color: white;
-  text-align: left;
-}
-
-th, td {
-  padding: 12px;
-  border-bottom: 1px solid #ddd;
-  text-align: left;
-}
-
-/* Make Funding Amounts Bold */
-td:nth-child(3) {
-  font-weight: bold;
-  color: #007b00;
-}
-
-/* Alternate Row Styling */
-tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-/* Table Row Hover Effect */
-tbody tr:hover {
-  background-color: #e9ecef;
-}
-
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  table {
-      display: block;
-      overflow-x: auto;
-      white-space: nowrap;
-  }
-}
-
+/* Sub-section inside the Projects card: no nested card styling */
 .research-projects {
-  width: 75vw; 
-  margin: 10px 10px; 
-  margin-top: 30px;
-  padding: 5px;
-  background: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  margin-top: 40px;
 }
 
 .research-projects h2 {
-  color: inherit;
-  text-align: inherit;
-  font-size: inherit;
-  margin-bottom: 10px;
-  border-bottom: none;
+  display: block;
+  width: fit-content;
+  margin: 0 auto 25px;
+  padding: 8px 24px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-color) 60%, var(--heading-color));
+  color: var(--contrast-color);
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 }
 
 .project {
-  background-color: #fff;
+  background-color: var(--surface-color);
   padding: 15px;
   margin-bottom: 20px;
-  border-left: 5px solid #007BFF;
+  border-left: 5px solid var(--accent-color);
   border-radius: 8px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .project h3 {
-  color: #007BFF;
+  color: var(--heading-color);
   font-size: 20px;
   margin-bottom: 10px;
 }
 
 .project p {
   font-size: 16px;
-  color: #555;
+  color: var(--default-color);
   line-height: 1.6;
+}
+
+/* Responsive table handling */
+@media screen and (max-width: 768px) {
+  .employment table,
+  .research table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .education,
+  .employment,
+  .research,
+  .journal-container {
+    padding: 20px 15px;
+  }
+
+  .education > h2,
+  .employment > h2,
+  .research > h2,
+  .journal-title {
+    font-size: 22px;
+  }
 }
 
 /*--------------------------------------------------------------
 # Award / Grant
 --------------------------------------------------------------*/
-.award {
-  width: 75vw; 
-  margin: 75px 10px; 
-  padding: 5px;
-  background: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-}
-h2 {
-  color: #000; /* Changed to black */
-  font-size: 28px; /* Increased font size for better visibility */
-  font-weight: bold; /* Makes the text stand out */
-  text-align: center; /* Centers the heading */
-  text-transform: uppercase; /* Converts text to uppercase for a strong heading */
-  letter-spacing: 1.5px; /* Adds spacing for better readability */
-  margin-bottom: 25px; /* Slightly increased spacing below */
-  border-bottom: 3px solid #0056b3; /* Adds a bottom border for emphasis */
-  display: inline-block; /* Makes border fit the text width */
-  padding-bottom: 5px; /* Adds a little space below the text */
-}
-p {
-  font-size: 16px;
-  color: #333;
-}
+/* Award card styles are in the shared card block above */
 
 /*--------------------------------------------------------------
 # Journal, Conference Publications, Books/Book Chapters,  Tech-Academic Contributions, Professional Development, Administrative and Organizational Roles
 --------------------------------------------------------------*/
-/* --------Editor/Guest Editor------ */
-.journal-container {
-  width: 75vw; 
-  margin: 75px 10px; 
-  padding: 5px;
-  background: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-}
-.journal-title {
-  color: #000; /* Changed to black */
-  font-size: 28px; /* Increased font size for better visibility */
-  font-weight: bold; /* Makes the text stand out */
-  text-align: center; /* Centers the heading */
-  text-transform: uppercase; /* Converts text to uppercase for a strong heading */
-  letter-spacing: 1.5px; /* Adds spacing for better readability */
-  margin-bottom: 25px; /* Slightly increased spacing below */
-  border-bottom: 3px solid #0056b3; /* Adds a bottom border for emphasis */
-  display: inline-block; /* Makes border fit the text width */
-  padding-bottom: 5px; /* Adds a little space below the text */
-}
 .journal-list {
   list-style-type: none;
   padding: 0;
 }
 .journal-item {
-  background: #ffffff;
+  background: var(--surface-color);
   margin: 10px 0;
   padding: 10px;
-  border-left: 5px solid #0073e6;
+  border-left: 5px solid var(--accent-color);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .journal-highlight {
-  color: #0073e6;
+  color: var(--accent-color);
 }
 
-.admin-responsibilities {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-  padding: 20px;
-  background-color: #f8f9fa;
-  border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.admin-responsibilities h2 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 15px;
-}
-
-.admin-responsibilities table {
-  width: 100%;
-  border-collapse: collapse;
-  background: #ffffff;
-}
-
-.admin-responsibilities th, .admin-responsibilities td {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: left;
-}
-
-.admin-responsibilities th {
-  background-color: #007bff;
-  color: white;
-}
-
-.admin-responsibilities tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-.admin-responsibilities tr:hover {
-  background-color: #ddd;
-}
-
-/*--------------------------------------------------------------
-# Personal details
---------------------------------------------------------------*/
-.personal-details {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-}
-
-.personal-details h2 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 15px;
-}
-
-.details-container p {
-  font-size: 16px;
-  color: #555;
-  margin: 8px 0;
-  line-height: 1.5;
-}
-
-.details-container strong {
-  color: #222;
-}
-
-.details-container a {
-  color: #007bff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.details-container a:hover {
-  text-decoration: underline;
-}
+/* Administrative Responsibilities: card and table styles are in the shared blocks above */
